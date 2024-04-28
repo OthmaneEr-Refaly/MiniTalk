@@ -11,16 +11,16 @@
 /* ************************************************************************** */
 
 #ifndef MINITALK_H
-#define MINITALK_H
-#include <signal.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <unistd.h>
+# define MINITALK_H
+# include <signal.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+# include <unistd.h>
 
-void        ft_putstr(char *s);
-char        *ft_itoa(int n);
-long int    ft_atoi(const char *str);
-size_t      ft_strlen(const char *str);
+void		ft_putstr(char *s);
+char		*ft_itoa(int n);
+long int	ft_atoi(const char *str);
+size_t		ft_strlen(const char *str);
 
 #endif

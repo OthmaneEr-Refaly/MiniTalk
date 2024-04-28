@@ -6,7 +6,7 @@
 /*   By: oer-refa <oer-refa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 04:12:03 by oer-refa          #+#    #+#             */
-/*   Updated: 2024/04/06 04:12:48 by oer-refa         ###   ########.fr       */
+/*   Updated: 2024/04/27 21:51:57 by oer-refa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	handle_signal(int sig, siginfo_t *info, void *str)
 	if (bit == 8)
 	{
 		if (s == '\0')
-			kill(info->si_pid, SIGUSR1);
+			kill(info->si_pid, SIGUSR2);
 		else
 			write(1, &s, 1);
 		s = 0;
@@ -42,8 +42,8 @@ int	main(void)
 	pid = ft_itoa(getpid());
 	sa.sa_flags = SA_SIGINFO;
 	sa.sa_sigaction = &handle_signal;
-	if (sigaction(SIGUSR1, &sa, NULL) == -1
-		|| sigaction(SIGUSR2, &sa, NULL) == -1)
+	if (sigaction(SIGUSR1, &sa, NULL) == -1 || sigaction
+		(SIGUSR2, &sa, NULL) == -1)
 	{
 		ft_putstr("sigaction error ");
 		exit(1);

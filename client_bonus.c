@@ -6,7 +6,7 @@
 /*   By: oer-refa <oer-refa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 04:14:05 by oer-refa          #+#    #+#             */
-/*   Updated: 2024/04/06 04:14:14 by oer-refa         ###   ########.fr       */
+/*   Updated: 2024/04/27 21:53:29 by oer-refa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,15 @@ void	send_bit(char c, pid_t server_pid)
 				exit(1);
 			}
 		}
-		usleep(150);
+		usleep(300);
 		bit--;
 	}
 }
 
 void	end_sind(int sig)
 {
-	(void)sig;
-	ft_putstr("message is send");
+	if (sig == SIGUSR2)
+		ft_putstr("message is send");
 }
 
 int	main(int argc, char *argv[])
@@ -56,20 +56,21 @@ int	main(int argc, char *argv[])
 	{
 		server_pid = ft_atoi(argv[1]);
 		str = argv[2];
-		if (server_pid <= 0 || server_pid > 2147483647
-			|| ft_strlen(argv[1]) > 12)
+		if (server_pid <= 0 || server_pid > 2147483647)
 		{
 			ft_putstr("PID Invalid");
 			exit(1);
 		}
-		signal(SIGUSR1, end_sind);
+		signal(SIGUSR2, end_sind);
 		i = 0;
 		while (str[i])
 		{
 			send_bit(str[i], server_pid);
 			i++;
+			usleep(300);		
 		}
 		send_bit(str[i], server_pid);
+		
 	}
 	else
 		(ft_putstr("problem with the number of arg (PID or message)"), exit(1));

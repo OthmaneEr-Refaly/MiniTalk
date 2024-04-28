@@ -6,17 +6,21 @@
 #    By: oer-refa <oer-refa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/06 04:12:18 by oer-refa          #+#    #+#              #
-#    Updated: 2024/04/18 14:28:30 by oer-refa         ###   ########.fr        #
+#    Updated: 2024/04/27 21:47:00 by oer-refa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = server2
+NAME = server
 NAME_2 = client
+NAME_3 = server_bonus
+NAME_4 = client_bonus
 
 CFLAGS = -Wall -Wextra -Werror
 SRC = ft_atoi.c ft_itoa.c ft_putstr.c ft_strlen.c
-SRCS =  $(SRC) server2.c
+SRCS =  $(SRC) server.c
 SRCC =  $(SRC) client.c
+SRCSB =  $(SRC) server_bonus.c
+SRCCB =  $(SRC) client_bonus.c
 OBGS = $(SRCS:.c=.o)
 OBGC = $(SRCC:.c=.o)
 OBGSB = $(SRCSB:.c=.o)
